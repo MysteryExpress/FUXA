@@ -205,7 +205,7 @@ function MQTTclient(_data, _logger, _events, _runtime) {
                 } else {
                     resolve('ok');
                 }
-                browser.subscribe(topic, function () {
+                browser.subscribe(topic,{"rh":false,"rap":false},function () {
                 });
             } catch (err) {
                 reject('browse-error: ' + err);
@@ -370,7 +370,7 @@ function MQTTclient(_data, _logger, _events, _runtime) {
             var topics = Object.values(data.tags).map(t => t.address);
             _mapTopicsAddress(Object.values(data.tags));
             if (topics && topics.length) {
-                client.subscribe(topics, function (err) {
+                client.subscribe(topics,{"rh":false,"rap":false},function (err) {
                     if (err) {
                         reject(err);
                     } else {
